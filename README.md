@@ -1,6 +1,6 @@
 # bore
 
-[![Build status](https://img.shields.io/github/workflow/status/ekzhang/bore/CI)](https://github.com/ekzhang/bore/actions)
+[![Build status](https://img.shields.io/github/actions/workflow/status/ekzhang/bore/ci.yml)](https://github.com/ekzhang/bore/actions)
 [![Crates.io](https://img.shields.io/crates/v/bore-cli.svg)](https://crates.io/crates/bore-cli)
 
 A modern, simple TCP tunnel in Rust that exposes local ports to a remote server, bypassing standard NAT connection firewalls. **That's all it does: no more, and no less.**
@@ -19,14 +19,14 @@ This will expose your local port at `localhost:8000` to the public internet at `
 
 Similar to [localtunnel](https://github.com/localtunnel/localtunnel) and [ngrok](https://ngrok.io/), except `bore` is intended to be a highly efficient, unopinionated tool for forwarding TCP traffic that is simple to install and easy to self-host, with no frills attached.
 
-(`bore` totals less than 400 lines of safe, async Rust code and is trivial to set up — just run a single binary for the client and server.)
+(`bore` totals about 400 lines of safe, async Rust code and is trivial to set up — just run a single binary for the client and server.)
 
 ## Installation
 
-If you're on macOS, `bore` is packaged as a Homebrew formula.
+If you're on macOS, `bore` is packaged as a Homebrew core formula.
 
 ```shell
-brew install ekzhang/bore/bore
+brew install bore-cli
 ```
 
 Otherwise, the easiest way to install bore is from prebuilt binaries. These are available on the [releases page](https://github.com/ekzhang/bore/releases) for macOS, Windows, and Linux. Just unzip the appropriate file for your platform and move the `bore` executable into a folder on your PATH.
@@ -93,7 +93,8 @@ Runs the remote proxy server
 Usage: bore server [OPTIONS]
 
 Options:
-      --min-port <MIN_PORT>  Minimum TCP port number to accept [default: 1024]
+      --min-port <MIN_PORT>  Minimum accepted TCP port number [default: 1024]
+      --max-port <MAX_PORT>  Maximum accepted TCP port number [default: 65535]
   -s, --secret <SECRET>      Optional secret for authentication [env: BORE_SECRET]
   -h, --help                 Print help information
 ```
